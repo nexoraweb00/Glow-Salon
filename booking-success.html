@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed | Glow Beauty Salon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fefae0 0%, #faedcd 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .success-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+        }
+        .icon-success { font-size: 50px; color: #4CAF50; margin-bottom: 10px; }
+        h1 { font-family: 'Playfair Display', serif; color: #2b2118; font-size: 26px; margin-bottom: 5px; }
+        .subtitle { color: #666; font-size: 14px; margin-bottom: 25px; }
+        
+        .details-box {
+            background: #fdfbf7;
+            padding: 20px 25px;
+            border-radius: 15px;
+            text-align: left;
+            margin-bottom: 25px;
+            border: 1px solid #f0e6d2;
+        }
+        .details-box p {
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #333;
+            border-bottom: 1px dashed #e0d5c1;
+            padding-bottom: 8px;
+        }
+        .details-box p:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+        .details-box strong { color: #d4a373; display: inline-block; width: 100px; }
+        
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        #qrcode {
+            padding: 10px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+        .btn-home {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #d4a373;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .btn-home:hover { background: #2b2118; }
+    </style>
+</head>
+<body>
+
+    <div class="success-card">
+        <div class="icon-success">✔</div>
+        <h1>Booking Confirmed!</h1>
+        <p class="subtitle">Please show this QR code at the salon.</p>
+
+        
+        <div class="details-box" id="bookingDetails">
+            <p style="text-align: center;">Loading details...</p>
+        </div>
+
+        <div class="qr-section">
+            <div id="qrcode"></div>
+        </div>
+
+        <a href="index.html" class="btn-home">Back to Home</a>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+       
+        const firebaseConfig = {
+  apiKey: "AIzaSyDkBPWm-aUq7wGrcf0IaiBpjmrzwl9VT5o",
+  authDomain: "luxury-salon-a871c.firebaseapp.com",
+  projectId: "luxury-salon-a871c",
+  storageBucket: "luxury-salon-a871c.firebasestorage.app",
+  messagingSenderId: "689445019169",
+  appId: "1:689445019169:web:681de187aaede0eb8a0d60",
+  measurementId: "G-XQ706J5L9X"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingId = urlParams.get('id');
+        const detailsDiv = document.getElementById('bookingDetails');
+
+        if (bookingId) {
+            getDoc(doc(db, "bookings", bookingId)).then((docSnap) => {
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    
+                   
+                    detailsDiv.innerHTML = `
+                        <p><strong>Name:</strong> ${data.name || 'N/A'}</p>
+                        <p><strong>Email:</strong> ${data.email || 'N/A'}</p>
+                        <p><strong>Phone:</strong> ${data.phone || 'N/A'}</p>
+                        <p><strong>Service:</strong> ${data.category || 'N/A'} ${data.service ? '- ' + data.service : ''}</p>
+                        <p><strong>Message:</strong> ${data.message || 'None'}</p>
+                    `;
+
+                
+                    const qrText = `--- Glow Salon ---\nName: ${data.name}\nPhone: ${data.phone}\nService: ${data.category} ${data.service || ''}`;
+
+                    new QRCode(document.getElementById("qrcode"), {
+                        text: qrText,
+                        width: 160,
+                        height: 160,
+                        colorDark : "#2b2118",
+                        colorLight : "#ffffff",
+                    });
+
+                } else {
+                    detailsDiv.innerHTML = `<p>Booking not found.</p>`;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

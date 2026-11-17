@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | Glow Salon</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .notif-container { max-width: 800px; margin: 120px auto; padding: 20px; }
+        .notif-card { 
+            background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; gap: 15px; align-items: flex-start;
+        }
+        .notif-icon { font-size: 24px; color: var(--primary); }
+        .notif-content h4 { margin-bottom: 5px; color: var(--dark); }
+        .notif-content p { color: #666; font-size: 14px; margin-bottom: 10px; }
+        .notif-time { font-size: 12px; color: #999; }
+        .notif-unread { border-left: 4px solid var(--primary); background: #fdfbf7; }
+                @media (max-width: 600px) {
+            .notif-container { margin: 100px 15px 40px 15px; }
+            .notif-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Glow<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notif-container">
+        <h1 style="margin-bottom: 20px;">Your Notifications</h1>
+        <div id="notifList"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, collection, query, where, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      
+        const firebaseConfig = { 
+  apiKey: "AIzaSyDkBPWm-aUq7wGrcf0IaiBpjmrzwl9VT5o",
+  authDomain: "luxury-salon-a871c.firebaseapp.com",
+  projectId: "luxury-salon-a871c",
+  storageBucket: "luxury-salon-a871c.firebasestorage.app",
+  messagingSenderId: "689445019169",
+  appId: "1:689445019169:web:681de187aaede0eb8a0d60",
+  measurementId: "G-XQ706J5L9X"
+         };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const notifList = document.getElementById('notifList');
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+             
+                const q = query(collection(db, "notifications"), where("userId", "==", user.uid));
+                
+                onSnapshot(q, (snapshot) => {
+                    notifList.innerHTML = "";
+                    let notifs = [];
+                    snapshot.forEach(doc => notifs.push({id: doc.id, ...doc.data()}));
+                    
+              
+                    notifs.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
+
+                    if(notifs.length === 0) {
+                        notifList.innerHTML = "<p style='color: #666;'>No notifications yet.</p>";
+                        return;
+                    }
+
+                    notifs.forEach(n => {
+                        const isUnread = !n.isRead ? 'notif-unread' : '';
+                        const date = n.createdAt ? new Date(n.createdAt.seconds * 1000).toLocaleString() : '';
+
+                        notifList.innerHTML += `
+                            <div class="notif-card ${isUnread}" id="notif-${n.id}">
+                                <div class="notif-icon"><i class="fas fa-bell"></i></div>
+                                <div class="notif-content">
+                                    <h4>${n.title}</h4>
+                                    <p>${n.message}</p>
+                                    <span class="notif-time">${date}</span>
+                                </div>
+                            </div>
+                        `;
+
+                       
+                        if(!n.isRead) {
+                            updateDoc(doc(db, "notifications", n.id), { isRead: true });
+                        }
+                    });
+                });
+            } else {
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>

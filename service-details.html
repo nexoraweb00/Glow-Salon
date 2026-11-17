@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Glow Beauty Salon</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Glow<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn-book">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 id="pageTitle">Loading...</h1>
+        <p id="pageSubtitle">Discover our premium offerings.</p>
+    </div>
+
+    <!-- Content -->
+    <section class="page-section">
+        <a href="index.html#services" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Services</a>
+        
+        <h2>Our <span id="serviceName" class="highlight">Services</span></h2>
+        <div class="product-grid" id="servicesList">
+            <!-- Services will be loaded here by JavaScript -->
+        </div>
+
+        <h2>Premium <span class="highlight">Products</span></h2>
+        <div class="product-grid" id="productsList">
+            <!-- Products will be loaded here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <a href="index.html" class="logo">Glow<span>.</span></a>
+                <p>Enhancing beauty, inspiring confidence.</p>
+            </div>
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <p class="copyright">© 2025 Glow Beauty Salon. All rights reserved.</p>
+    </footer>
+
+    <!-- Dynamic Data and Logic -->
+    <script>
+        // 1. Data for all 6 services
+        const salonData = {
+            hair: {
+                title: "Hair Styling",
+                services: [
+                    { name: "Precision Haircut", desc: "Customized cuts to suit your face shape.", price: "$25+" },
+                    { name: "Hair Coloring", desc: "Balayage, highlights, and full color.", price: "$60+" },
+                    { name: "Keratin Treatment", desc: "Smooth, frizz-free hair that lasts.", price: "$100+" }
+                ],
+                products: [
+                    { name: "Nourishing Shampoo", desc: "Sulfate-free formula for healthy hair.", price: "$18.00", img: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400" },
+                    { name: "Argan Hair Oil", desc: "Deep conditioning for damaged hair.", price: "$22.00", img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400" },
+                    { name: "Repair Hair Mask", desc: "Intensive weekly treatment.", price: "$25.00", img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400" }
+                ]
+            },
+            facial: {
+                title: "Facial & Skincare",
+                services: [
+                    { name: "Deep Cleansing Facial", desc: "Removes impurities and unclogs pores.", price: "$35+" },
+                    { name: "Anti-Aging Treatment", desc: "Reduce fine lines and restore elasticity.", price: "$55+" },
+                    { name: "Hydrating Facial", desc: "Intense moisture boost for dry skin.", price: "$40+" }
+                ],
+                products: [
+                    { name: "Vitamin C Serum", desc: "Brightens skin tone and protects.", price: "$30.00", img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400" },
+                    { name: "Hydrating Moisturizer", desc: "Lightweight daily moisturizer.", price: "$28.00", img: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400" },
+                    { name: "SPF 50 Sunscreen", desc: "Broad-spectrum protection.", price: "$20.00", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400" }
+                ]
+            },
+            nail: {
+                title: "Nail Art",
+                services: [
+                    { name: "Classic Manicure", desc: "Nail shaping, cuticle care, and polish.", price: "$15+" },
+                    { name: "Gel Extensions", desc: "Long-lasting, durable gel nails.", price: "$40+" },
+                    { name: "Creative Nail Art", desc: "Custom designs and hand-painted art.", price: "$25+" }
+                ],
+                products: [
+                    { name: "Gel Polish Set", desc: "Long-lasting vibrant colors.", price: "$30.00", img: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400" },
+                    { name: "Cuticle Oil", desc: "Nourishes and strengthens nails.", price: "$12.00", img: "https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?w=400" },
+                    { name: "Nail Strengthener", desc: "Prevents breakage and peeling.", price: "$15.00", img: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400" }
+                ]
+            },
+            bridal: {
+                title: "Bridal Makeup",
+                services: [
+                    { name: "Bridal Trial", desc: "Consultation and makeup trial run.", price: "$50+" },
+                    { name: "Wedding Day Makeup", desc: "Flawless, long-lasting bridal look.", price: "$150+" },
+                    { name: "Bridesmaid Makeup", desc: "Beautiful looks for your bridal party.", price: "$80+" }
+                ],
+                products: [
+                    { name: "HD Makeup Palette", desc: "Professional grade colors.", price: "$45.00", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400" },
+                    { name: "Long-Wear Foundation", desc: "Stays all day without fading.", price: "$35.00", img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400" },
+                    { name: "Setting Spray", desc: "Locks makeup for 16+ hours.", price: "$20.00", img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400" }
+                ]
+            },
+            eyebrow: {
+                title: "Eyebrow & Lashes",
+                services: [
+                    { name: "Eyebrow Threading", desc: "Precise shaping and hair removal.", price: "$10+" },
+                    { name: "Lash Extensions", desc: "Classic or volume natural-looking lashes.", price: "$50+" },
+                    { name: "Lash Lift & Tint", desc: "Enhances natural lashes.", price: "$35+" }
+                ],
+                products: [
+                    { name: "Brow Pomade", desc: "Waterproof and smudge-proof.", price: "$18.00", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400" },
+                    { name: "Lash Growth Serum", desc: "Nourishes and lengthens lashes.", price: "$25.00", img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400" },
+                    { name: "Gentle Makeup Remover", desc: "Safe for eyes and lashes.", price: "$12.00", img: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400" }
+                ]
+            },
+            spa: {
+                title: "Massage & Spa",
+                services: [
+                    { name: "Swedish Massage", desc: "Relaxing full-body massage.", price: "$60+" },
+                    { name: "Hot Stone Therapy", desc: "Soothes muscle tension and stress.", price: "$80+" },
+                    { name: "Aromatherapy Facial", desc: "Rejuvenating facial with essential oils.", price: "$45+" }
+                ],
+                products: [
+                    { name: "Relaxing Massage Oil", desc: "Lavender and chamomile blend.", price: "$22.00", img: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400" },
+                    { name: "Body Scrub", desc: "Exfoliates and renews skin.", price: "$25.00", img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400" },
+                    { name: "Soy Candle", desc: "Calming ambiance for your home.", price: "$18.00", img: "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=400" }
+                ]
+            }
+        };
+
+        // 2. Get the 'type' from the URL (e.g., service-details.html?type=hair)
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceType = urlParams.get('type') || 'hair'; // Default to 'hair' if no type
+        const data = salonData[serviceType];
+
+        // 3. Update Page Titles
+        if(data) {
+            document.getElementById('pageTitle').innerHTML = `${data.title} <span class="highlight">Details</span>`;
+            document.getElementById('pageSubtitle').innerText = `Explore our premium ${data.title.toLowerCase()} offerings.`;
+            document.getElementById('serviceName').innerText = data.title;
+
+            // 4. Render Services
+            const servicesList = document.getElementById('servicesList');
+            data.services.forEach(s => {
+                servicesList.innerHTML += `
+                    <div class="product-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3>${s.name}</h3>
+                            <p>${s.desc}</p>
+                            <span class="price">${s.price}</span>
+                        </div>
+                       
+                        <a href="index.html?category=${encodeURIComponent(data.title)}&service=${encodeURIComponent(s.name)}#contact" class="btn-primary" style="margin-top: 15px; padding: 10px 20px; font-size: 14px; text-decoration: none;">Book This Service</a>
+                    </div>
+                `;
+            });
+
+                            // 5. Render Products
+            const productsList = document.getElementById('productsList');
+            data.products.forEach(p => {
+                
+                const encodedName = encodeURIComponent(p.name);
+                const encodedPrice = encodeURIComponent(p.price);
+                const encodedDesc = encodeURIComponent(p.desc);
+                const encodedImg = encodeURIComponent(p.img);
+
+            productsList.innerHTML += `
+
+                <a href="product-details.html?name=${encodedName}&price=${encodedPrice}&desc=${encodedDesc}&img=${encodedImg}" class="product-card" style="text-decoration: none; color: inherit; display: block; transition: 0.3s;">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <p>${p.desc}</p>
+                    <span class="price">${p.price}</span>
+                </a>
+            `; 
+            });
+        }
+</script>
+
+</body>
+</html>

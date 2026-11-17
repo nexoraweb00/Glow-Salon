@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Beauty Salon | Beauty Meets Elegance</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+        <div class="nav-container">
+            <a href="#" class="logo">Glow<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+                        <div class="nav-actions">
+                <a href="#contact" class="btn-book">Book Now</a>
+                
+                <a href="notifications.html" class="notification-bell" id="nav-notif-btn" style="display: none; position: relative; color: var(--dark); font-size: 20px; text-decoration: none;">
+                    <i class="fas fa-bell"></i>
+                    <span id="notif-count" style="position: absolute; top: -5px; right: -8px; background: red; color: white; border-radius: 50%; padding: 2px 5px; font-size: 10px; font-weight: bold; display: none;">0</span>
+                </a>
+
+                <button id="nav-login-btn" class="btn-login">Login</button>
+
+                            <!-- Logged In State -->
+            <div id="nav-profile" style="display: none;">
+                <a href="profile.html">
+                    <img id="nav-profile-pic" src="" alt="Profile" title="My Profile">
+                </a>
+            </div>
+            </div>
+           
+
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle">WELCOME TO GLOW SALON</p>
+            <h1>Where Beauty <br>Meets <span class="highlight">Elegance</span></h1>
+            <p class="hero-text">We enhance your natural beauty with professional care and premium services. Discover a look that truly reflects who you are.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Book Appointment</a>
+                <a href="#services" class="btn-secondary">Our Services</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800" alt="Beauty Salon">
+            <div class="floating-card card-1">
+                <i class="fas fa-star"></i>
+                <div>
+                    <strong>4.9</strong>
+                    <small>500+ Reviews</small>
+                </div>
+            </div>
+            <div class="floating-card card-2">
+                <i class="fas fa-award"></i>
+                <div>
+                    <strong>10+ Years</strong>
+                    <small>Experience</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <p class="section-subtitle">OUR SERVICES</p>
+            <h2>What We <span class="highlight">Offer</span></h2>
+        </div>
+                       <div class="services-grid">
+            <!-- Hair Styling -->
+            <a href="service-details.html?type=hair" class="service-card">
+                <div class="service-icon"><i class="fas fa-cut"></i></div>
+                <h3>Hair Styling</h3>
+                <p>Modern haircuts, coloring and styling tailored to your personality.</p>
+                
+            </a>
+
+            <!-- Facial & Skincare -->
+            <a href="service-details.html?type=facial" class="service-card featured">
+                <div class="service-icon"><i class="fas fa-spa"></i></div>
+                <h3>Facial & Skincare</h3>
+                <p>Premium facial treatments designed to give you glowing, healthy skin.</p>
+                
+            </a>
+
+            <!-- Nail Art -->
+            <a href="service-details.html?type=nail" class="service-card">
+                <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
+                <h3>Nail Art</h3>
+                <p>Beautiful manicures, pedicures and creative nail designs.</p>
+                
+            </a>
+
+            <!-- Bridal Makeup -->
+            <a href="service-details.html?type=bridal" class="service-card">
+                <div class="service-icon"><i class="fas fa-magic"></i></div>
+                <h3>Bridal Makeup</h3>
+                <p>Stunning bridal looks crafted for your most special day.</p>
+                
+            </a>
+
+            <!-- Eyebrow & Lashes -->
+            <a href="service-details.html?type=eyebrow" class="service-card">
+                <div class="service-icon"><i class="fas fa-eye"></i></div>
+                <h3>Eyebrow & Lashes</h3>
+                <p>Professional threading, lash extensions and shaping services.</p>
+                
+            </a>
+
+            <!-- Massage & Spa -->
+            <a href="service-details.html?type=spa" class="service-card">
+                <div class="service-icon"><i class="fas fa-heart"></i></div>
+                <h3>Massage & Spa</h3>
+                <p>Relaxing body massages and soothing spa treatments.</p>
+                
+            </a>
+        </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800" alt="About Salon">
+        </div>
+        <div class="about-content">
+            <p class="section-subtitle">ABOUT US</p>
+            <h2>We Believe in <span class="highlight">Beauty</span> & Confidence</h2>
+            <p>At Glow Beauty Salon, we believe true beauty comes from within. Our experienced team is dedicated to helping you look and feel your absolute best with personalized, professional care.</p>
+            <div class="about-features">
+                <div class="feature"><i class="fas fa-check-circle"></i> Certified Professionals</div>
+                <div class="feature"><i class="fas fa-check-circle"></i> Premium Products</div>
+                <div class="feature"><i class="fas fa-check-circle"></i> Hygienic Environment</div>
+                <div class="feature"><i class="fas fa-check-circle"></i> Personalized Service</div>
+            </div>
+            <a href="#contact" class="btn-primary">Visit Us Today</a>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="section-header">
+            <p class="section-subtitle">GALLERY</p>
+            <h2>Our <span class="highlight">Masterpieces</span></h2>
+        </div>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=500" alt="Gallery 1">
+            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500" alt="Gallery 2">
+            <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500" alt="Gallery 3">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500" alt="Gallery 4">
+            <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=500" alt="Gallery 5">
+            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=500" alt="Gallery 6">
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <p class="section-subtitle">TESTIMONIALS</p>
+            <h2>What Our <span class="highlight">Clients</span> Say</h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Absolutely the best salon in town! My bridal makeup was flawless. The team is so friendly and professional."</p>
+                <div class="client">
+                    <img src="https://i.pravatar.cc/100?img=1" alt="Client">
+                    <div><strong>Nadeesha Perera</strong><small>Bride</small></div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Professional staff and a very clean environment. My hair coloring came out perfect. Highly recommend!"</p>
+                <div class="client">
+                    <img src="https://i.pravatar.cc/100?img=5" alt="Client">
+                    <div><strong>Sanduni Silva</strong><small>Regular Client</small></div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"The spa treatment was incredibly relaxing. I visit once a month and I always leave feeling amazing!"</p>
+                <div class="client">
+                    <img src="https://i.pravatar.cc/100?img=9" alt="Client">
+                    <div><strong>Amaya Fernando</strong><small>Loyal Client</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <p class="section-subtitle">CONTACT US</p>
+                <h2>Book Your <span class="highlight">Appointment</span></h2>
+                <p>Reserve your appointment today. We look forward to welcoming you!</p>
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> 123 Galle Road, Colombo 03</div>
+                <div class="info-item"><i class="fas fa-phone"></i> +94 77 123 4567</div>
+                <div class="info-item"><i class="fas fa-envelope"></i> hello@glowsalon.com</div>
+                <div class="info-item"><i class="fas fa-clock"></i> Mon - Sat: 9AM - 8PM</div>
+            </div>
+         <form class="contact-form" id="bookingForm">
+    
+    <input type="text" id="bookName" placeholder="Your Name" required>
+    <input type="email" id="bookEmail" placeholder="Email Address" required>
+    <input type="tel" id="bookPhone" placeholder="Phone Number" required>
+    
+    <select id="bookCategory" required>
+        <option value="">Select Category</option>
+        <option value="Hair Styling">Hair Styling</option>
+        <option value="Facial & Skincare">Facial & Skincare</option>
+        <option value="Nail Art">Nail Art</option>
+        <option value="Bridal Makeup">Bridal Makeup</option>
+        <option value="Eyebrow & Lashes">Eyebrow & Lashes</option>
+        <option value="Massage & Spa">Massage & Spa</option>
+    </select>
+
+    <input type="text" id="bookSpecificService" placeholder="Specific Service" readonly>
+    
+    <textarea id="bookMessage" placeholder="Your Message" rows="4"></textarea>
+    
+    <button type="submit" class="btn-primary">Book Appointment</button>
+</form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <a href="#" class="logo">Glow<span>.</span></a>
+                <p>Enhancing beauty, inspiring confidence.</p>
+            </div>
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <p class="copyright">© 2025 Glow Beauty Salon. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Welcome Back</h2>
+            <p style="margin-bottom: 20px; color: #666;">Login to manage your appointments</p>
+            
+            <input type="email" id="email" placeholder="Email Address">
+            <input type="password" id="password" placeholder="Password">
+            
+            <div class="modal-buttons">
+                <button id="login-btn" class="btn-primary">Login</button>
+                <button id="register-btn" class="btn-secondary">Register</button>
+            </div>
+            
+            <div class="divider">OR</div>
+            
+            <button id="google-btn" class="btn-google">
+                <i class="fab fa-google"></i> Sign in with Google
+            </button>
+        </div>
+    </div>
+
+       <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+       
+
+        // Firebase Config
+        const firebaseConfig = {
+  apiKey: "AIzaSyDkBPWm-aUq7wGrcf0IaiBpjmrzwl9VT5o",
+  authDomain: "luxury-salon-a871c.firebaseapp.com",
+  projectId: "luxury-salon-a871c",
+  storageBucket: "luxury-salon-a871c.firebasestorage.app",
+  messagingSenderId: "689445019169",
+  appId: "1:689445019169:web:681de187aaede0eb8a0d60",
+  measurementId: "G-XQ706J5L9X"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+
+        // --- UI Elements ---
+        const modal = document.getElementById("loginModal");
+        const navLoginBtn = document.getElementById("nav-login-btn");
+        const navProfile = document.getElementById("nav-profile");
+        const navProfilePic = document.getElementById("nav-profile-pic");
+        const closeModal = document.querySelector(".close-modal");
+        
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const googleBtn = document.getElementById('google-btn');
+
+        // --- Modal Open/Close Logic ---
+        if (navLoginBtn && modal) {
+            navLoginBtn.onclick = () => modal.style.display = "flex";
+        }
+        if (closeModal && modal) {
+            closeModal.onclick = () => modal.style.display = "none";
+            window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+        }
+
+        // --- Auth State Listener ---
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Logged in
+                if (navLoginBtn) navLoginBtn.style.display = 'none';
+                if (navProfile) navProfile.style.display = 'flex';
+                if (navProfilePic) navProfilePic.src = user.photoURL || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y';
+                if (modal) modal.style.display = "none";
+                
+               
+                const bookName = document.getElementById('bookName');
+                const bookEmail = document.getElementById('bookEmail');
+                if (bookName) bookName.value = user.displayName || '';
+                if (bookEmail) bookEmail.value = user.email || '';
+            } else {
+                
+                if (navLoginBtn) navLoginBtn.style.display = 'block';
+                if (navProfile) navProfile.style.display = 'none';
+            }
+        });
+
+        if (registerBtn) {
+            registerBtn.addEventListener('click', async () => {
+                try {
+                    const userCredential = await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+                    await updateProfile(userCredential.user, { displayName: emailInput.value.split('@')[0] });
+                } catch (error) { alert(error.message); }
+            });
+        }
+
+        if (loginBtn) {
+            loginBtn.addEventListener('click', async () => {
+                try {
+                    await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+                } catch (error) { alert(error.message); }
+            });
+        }
+
+        if (googleBtn) {
+            googleBtn.addEventListener('click', async () => {
+                try {
+                    await signInWithPopup(auth, provider);
+                } catch (error) { alert(error.message); }
+            });
+           
+        onAuthStateChanged(auth, (user) => {
+            const notifBtn = document.getElementById('nav-notif-btn');
+            
+            if (user) {
+                if (notifBtn) notifBtn.style.display = 'block';
+        
+                const q = query(collection(db, "notifications"), where("userId", "==", user.uid), where("isRead", "==", false));
+                onSnapshot(q, (snapshot) => {
+                    const count = snapshot.size;
+                    const badge = document.getElementById('notif-count');
+                    if (count > 0) {
+                        badge.innerText = count;
+                        badge.style.display = 'inline-block';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                });
+
+            } else {
+                if (notifBtn) notifBtn.style.display = 'none';
+                // ... 
+            }
+        });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            const serviceParam = urlParams.get('service');
+
+            if (categoryParam && serviceParam) {
+                const catDropdown = document.getElementById('bookCategory');
+                const specService = document.getElementById('bookSpecificService');
+
+                if (catDropdown) catDropdown.value = categoryParam;
+                if (specService) specService.value = serviceParam;
+                
+                setTimeout(() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+        });
+
+        const bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+               
+                const name = document.getElementById('bookName').value;
+                const email = document.getElementById('bookEmail').value;
+                const phone = document.getElementById('bookPhone').value;
+                const category = document.getElementById('bookCategory').value;
+                const specificService = document.getElementById('bookSpecificService').value;
+                const message = document.getElementById('bookMessage').value;
+
+             
+                console.log("caught data:", name, email, phone, category, specificService);
+
+                const btn = bookingForm.querySelector('button');
+                btn.textContent = "Booking...";
+                btn.disabled = true;
+
+                try {
+                    const docRef = await addDoc(collection(db, "bookings"), {
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        category: category,
+                        service: specificService,
+                        message: message,
+                        status: "Pending",
+                        userId: auth.currentUser ? auth.currentUser.uid : "guest", 
+                        createdAt: new Date()
+                    });
+
+                    window.location.href = `booking-success.html?id=${docRef.id}`;
+
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Error: " + error.message);
+                    btn.textContent = "Book Appointment";
+                    btn.disabled = false;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
